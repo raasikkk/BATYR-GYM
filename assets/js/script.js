@@ -3,12 +3,18 @@ const loginPopupBg = document.getElementById('loginPopupBg');
 const loginPopupForm = document.getElementById('loginPopupForm'); 
 const openLoginPopupButton = document.getElementById('openLoginPopup'); 
 const closeLoginPopupButton = document.getElementById('closeLoginPopup'); 
+
 const newUserLink = document.getElementById('newUser');
+
 const registerPopupBg = document.getElementById('registerPopupBg'); 
 const registerPopupForm = document.getElementById('registerPopupForm'); 
 const closeRegisterPopupButton = document.getElementById('closeRegisterPopup'); 
 const alert_signin = document.getElementById('openPopup');
 
+const profilePopupBg = document.getElementById('profilePopupBg'); 
+const profilePopupForm = document.getElementById('profilePopupForm'); 
+const openProfilePopupButton = document.getElementById('openProfilePopup'); 
+const closeProfilePopupButton = document.getElementByID('closeProfilePopup');
 
 
 function alert_signin_func (){
@@ -44,6 +50,19 @@ closeRegisterPopupButton.addEventListener('click', () => {
   registerPopupForm.classList.remove('active');
 });
 
+// Open profile popup
+openProfilePopupButton.addEventListener('click', (e) => { 
+  e.preventDefault(); 
+  profilePopupBg.classList.add('active'); 
+  profilePopupForm.classList.add('active'); 
+});
+
+// Close profile popup
+closeProfilePopupButton.addEventListener('click', () => { 
+  profilePopupBg.classList.remove('active'); 
+  profilePopupForm.classList.remove('active');
+});
+
 // Close popups by clicking outside
 document.addEventListener('click', (e) => { 
   if (e.target === loginPopupBg) {
@@ -52,6 +71,13 @@ document.addEventListener('click', (e) => {
   } else if (e.target === registerPopupBg) {
     registerPopupBg.classList.remove('active'); 
     registerPopupForm.classList.remove('active'); 
+  } 
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target === profilePopupBg) {
+    profilePopupBg.classList.remove('active'); 
+    profilePopupForm.classList.remove('active'); 
   }
 });
   
