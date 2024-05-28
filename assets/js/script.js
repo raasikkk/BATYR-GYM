@@ -3,9 +3,7 @@ const loginPopupBg = document.getElementById('loginPopupBg');
 const loginPopupForm = document.getElementById('loginPopupForm'); 
 const openLoginPopupButton = document.getElementById('openLoginPopup'); 
 const closeLoginPopupButton = document.getElementById('closeLoginPopup'); 
-
 const newUserLink = document.getElementById('newUser');
-
 const registerPopupBg = document.getElementById('registerPopupBg'); 
 const registerPopupForm = document.getElementById('registerPopupForm'); 
 const closeRegisterPopupButton = document.getElementById('closeRegisterPopup'); 
