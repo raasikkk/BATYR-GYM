@@ -54,6 +54,8 @@ document.addEventListener('click', (e) => {
     registerPopupForm.classList.remove('active'); 
   }
 });
+
+
   
   
   
