@@ -74,7 +74,7 @@
 
 const profilePopupBg = document.getElementById('profilePopupBg'); 
 const profilePopupForm = document.getElementById('profilePopupForm'); 
-const openProfilePopupButton = document.getElementById('salam'); 
+const openProfilePopupButton = document.getElementById('userName'); 
 const closeProfilePopupButton = document.getElementByID('closeProfilePopup');
 
 // Open profile popup

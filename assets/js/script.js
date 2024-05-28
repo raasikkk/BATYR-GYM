@@ -54,6 +54,8 @@ document.addEventListener('click', (e) => {
   }
 });
 
+
+
   
   
   /**
@@ -93,6 +95,3 @@ document.addEventListener('click', (e) => {
       backTopBtn.classList.remove("active");
     }
   });
-
-  
-
