@@ -9,11 +9,6 @@ const registerPopupForm = document.getElementById('registerPopupForm');
 const closeRegisterPopupButton = document.getElementById('closeRegisterPopup'); 
 const alert_signin = document.getElementById('openPopup');
 
-const profilePopupBg = document.getElementById('profilePopupBg'); 
-const profilePopupForm = document.getElementById('profilePopupForm'); 
-const openProfilePopupButton = document.getElementById('openProfilePopup'); 
-const closeProfilePopupButton = document.getElementByID('closeProfilePopup');
-
 
 function alert_signin_func (){
   alert(`You didn't sign in yet`)
@@ -58,6 +53,11 @@ document.addEventListener('click', (e) => {
     registerPopupForm.classList.remove('active'); 
   }
 });
+
+const profilePopupBg = document.getElementById('profilePopupBg'); 
+const profilePopupForm = document.getElementById('profilePopupForm'); 
+const openProfilePopupButton = document.getElementById('openProfilePopup'); 
+const closeProfilePopupButton = document.getElementByID('closeProfilePopup');
 
 document.addEventListener('click', (e) => {
   if (e.target === profilePopupBg) {
