@@ -48,7 +48,6 @@ closeRegisterPopupButton.addEventListener('click', () => {
   registerPopupForm.classList.remove('active');
 });
 
-
 // Close popups by clicking outside
 document.addEventListener('click', (e) => { 
   if (e.target === loginPopupBg) {
@@ -57,7 +56,7 @@ document.addEventListener('click', (e) => {
   } else if (e.target === registerPopupBg) {
     registerPopupBg.classList.remove('active'); 
     registerPopupForm.classList.remove('active'); 
-  } 
+  }
 });
 
 document.addEventListener('click', (e) => {
