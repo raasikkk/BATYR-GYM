@@ -48,18 +48,6 @@ closeRegisterPopupButton.addEventListener('click', () => {
   registerPopupForm.classList.remove('active');
 });
 
-// Open profile popup
-openProfilePopupButton.addEventListener('click', (e) => { 
-  e.preventDefault(); 
-  profilePopupBg.classList.add('active'); 
-  profilePopupForm.classList.add('active'); 
-});
-
-// Close profile popup
-closeProfilePopupButton.addEventListener('click', () => { 
-  profilePopupBg.classList.remove('active'); 
-  profilePopupForm.classList.remove('active');
-});
 
 // Close popups by clicking outside
 document.addEventListener('click', (e) => { 
@@ -79,6 +67,18 @@ document.addEventListener('click', (e) => {
   }
 });
   
+// Open profile popup
+openProfilePopupButton.addEventListener('click', (e) => { 
+  e.preventDefault(); 
+  profilePopupBg.classList.add('active'); 
+  profilePopupForm.classList.add('active'); 
+});
+
+// Close profile popup
+closeProfilePopupButton.addEventListener('click', () => { 
+  profilePopupBg.classList.remove('active'); 
+  profilePopupForm.classList.remove('active');
+});
   
   
   /**
