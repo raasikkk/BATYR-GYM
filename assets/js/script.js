@@ -56,9 +56,7 @@ document.addEventListener('click', (e) => {
 });
 
 
-  
-  
-  
+
   /**
    * navbar toggle
    */
