@@ -54,30 +54,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-const profilePopupBg = document.getElementById('profilePopupBg'); 
-const profilePopupForm = document.getElementById('profilePopupForm'); 
-const openProfilePopupButton = document.getElementById('openProfilePopup'); 
-const closeProfilePopupButton = document.getElementByID('closeProfilePopup');
-
-document.addEventListener('click', (e) => {
-  if (e.target === profilePopupBg) {
-    profilePopupBg.classList.remove('active'); 
-    profilePopupForm.classList.remove('active'); 
-  }
-});
-  
-// Open profile popup
-openProfilePopupButton.addEventListener('click', (e) => { 
-  e.preventDefault(); 
-  profilePopupBg.classList.add('active'); 
-  profilePopupForm.classList.add('active'); 
-});
-
-// Close profile popup
-closeProfilePopupButton.addEventListener('click', () => { 
-  profilePopupBg.classList.remove('active'); 
-  profilePopupForm.classList.remove('active');
-});
   
   
   /**

@@ -71,3 +71,29 @@
       alert('Error purchasing class. Please try again later.');
     });
   }
+
+const profilePopupBg = document.getElementById('profilePopupBg'); 
+const profilePopupForm = document.getElementById('profilePopupForm'); 
+const openProfilePopupButton = document.getElementById('salam'); 
+const closeProfilePopupButton = document.getElementByID('closeProfilePopup');
+
+// Open profile popup
+openProfilePopupButton.addEventListener('click', (e) => { 
+  e.preventDefault(); 
+  profilePopupBg.classList.add('active'); 
+  profilePopupForm.classList.add('active'); 
+});
+
+// Close profile popup
+closeProfilePopupButton.addEventListener('click', () => { 
+  profilePopupBg.classList.remove('active'); 
+  profilePopupForm.classList.remove('active');
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target === profilePopupBg) {
+    profilePopupBg.classList.remove('active'); 
+    profilePopupForm.classList.remove('active'); 
+  }
+});
+  
