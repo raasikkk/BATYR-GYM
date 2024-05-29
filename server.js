@@ -54,7 +54,20 @@ app.post("/login", (req, res) => {
     } else if (result.rows.length > 0) {
       const userName = result.rows[0].name;
       const userId = result.rows[0].id;
-      res.status(200).send(`<script>
+      res.status(200).send(`
+      <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+      .userName {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+    </style>
+   </head>
+      <script>
         sessionStorage.setItem('userName', '${userName}');
         sessionStorage.setItem('userId', '${userId}');
         window.location.href = '/dashboard';
