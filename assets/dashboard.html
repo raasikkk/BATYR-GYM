@@ -40,7 +40,7 @@
               </li>
             </ul>
           </nav>
-          <span class="btn btn-secondary" id="userName">Login</span>
+          <span class="btn btn-secondary" id="userName">Profile</span>
           <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
             <span class="line"></span>
             <span class="line"></span>
@@ -77,26 +77,21 @@
       </section>
 
       <!--PopUp-->
-  <!-- Login Popup -->
+  <!-- Profile Popup -->
   <div class="popup__bg" id="loginPopupBg">
     <form class="popup" id="loginPopupForm" action="/login" method="POST">
       <img src="images/close_btn.png" class="close-popup" id="closeLoginPopup">
-      <label>
-        <input type="text" class="flogin" id="login" name="login">
-        <div class="label__text">Login</div>
-      </label>
-      <label>
-        <input type="password" class="fpassword" id="password" name="password">
-        <div class="label__text">Password</div>
-      </label>
-      <button type="submit">Sign In</button>
-      <a href="#" id="forgotPassword">Forgot the password?</a>
-      <a href="#" id="newUser">You are new here?</a>
+      <span class="profile_btn" id="profileName">Name:  </span>
+      <span class="profile_btn" id="profileSurname">Surname:  </span>
+      <span class="profile_btn" id="profileLogin">Login:  </span>
+      <div class="purchased_subs">Purchased Subscriptions: </div>
+      <ul id="purchasedList"></ul>
+      <a href="http://localhost:8000/">Log Out</a>
     </form>
   </div>
 
   <!-- Registration Popup -->
-  <div class="popup__bg" id="registerPopupBg"> 
+  <!-- <div class="popup__bg" id="registerPopupBg"> 
     <form class="popup" id="registerPopupForm" action="/register" method="POST">
       <img src="images/close_btn.png" class="close-popup" id="closeRegisterPopup">
       <label>
@@ -117,10 +112,10 @@
       </label>
       <button type="submit">Sign Up</button>
     </form>
-  </div> 
+  </div>  -->
 
  <!-- Profile Popup -->
- <div class="popup__bg" id="profilePopupBg"> 
+ <!-- <div class="popup__bg" id="profilePopupBg"> 
     <form class="popup" id="profilePopupForm" action="/profile" method="POST">
       <img src="images/close_btn.png" class="close-popup" id="closeProfilePopup">
       <span class="btn btn-secondary" id="profileName">Name</span>
@@ -131,7 +126,20 @@
 
     </div>
     <button type="submit">Sign Out</button>
-  </div> 
+  </div>  -->
+
+  <!-- <div class="popup__bg" id="registerPopupBg"> 
+    <form class="popup" id="registerPopupForm" action="/register" method="POST">
+      <img src="images/close_btn.png" class="close-popup" id="closeRegisterPopup">
+      <span class="btn btn-secondary" id="profileName">Name</span>
+      <span class="btn btn-secondary" id="profileSurname">Surname</span>
+      <span class="btn btn-secondary" id="profileLogin">Login</span>
+    </form>
+    <div class="purchasedClasses">
+
+    </div>
+    <button type="submit">Sign Out</button>
+  </div>  -->
 
 
         <!-- 
@@ -586,6 +594,65 @@
 
 
     <script src="js/script2.js"> </script>
+    <script src="js/dash_profile.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', (event) => {
+      document.getElementById('profileName').innerText += sessionStorage.getItem('userName');
+      document.getElementById('profileSurname').innerText += sessionStorage.getItem('userSurname');
+      document.getElementById('profileLogin').innerText += sessionStorage.getItem('userLogin');
+    
+      // Fetch and display purchased subscriptions on profile popup load
+      fetchPurchasedSubscriptions();
+    });
+    
+    function fetchPurchasedSubscriptions() {
+      const userName = sessionStorage.getItem('userName');
+      fetch(`/purchase?name=${userName}`)
+        .then(response => response.json())
+        .then(data => {
+          const purchasedList = document.getElementById('purchasedList');
+          purchasedList.innerHTML = '';
+          data.forEach(purchase => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${purchase.class_name} with ${purchase.coach_name} - $${purchase.price}`;
+            purchasedList.appendChild(listItem);
+          });
+        })
+        .catch(error => console.error('Error fetching purchases:', error));
+    }
+    
+    function purchaseClass(className, coachName, price) {
+      const userName = sessionStorage.getItem('userName');
+      
+      const data = {
+        name: userName,
+        class_name: className,
+        coach_name: coachName,
+        price: price
+      };
+    
+      fetch('/purchase', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('Purchase successful!');
+          fetchPurchasedSubscriptions(); // Refresh the purchased subscriptions list
+        } else {
+          alert(data.message); // Show error message if subscription already exists
+        }
+      })
+      .catch(error => {
+        console.error('Error purchasing class:', error);
+        alert('Error purchasing class. Please try again later.');
+      });
+    }
+    </script>
 
         <!-- 
       - ionicon link
