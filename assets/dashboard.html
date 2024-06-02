@@ -81,12 +81,12 @@
   <div class="popup__bg" id="loginPopupBg">
     <form class="popup" id="loginPopupForm" action="/login" method="POST">
       <img src="images/close_btn.png" class="close-popup" id="closeLoginPopup">
-      <span class="profile_btn" id="profileName">Name:  </span>
-      <span class="profile_btn" id="profileSurname">Surname:  </span>
-      <span class="profile_btn" id="profileLogin">Login:  </span>
+      <span class="profile_btn" id="profileName"><span>Name:  </span></span>
+      <span class="profile_btn" id="profileSurname">ID:03242312908  </span>
+      <!-- <span class="profile_btn" id="profileLogin">Login:  </span> -->
       <div class="purchased_subs">Purchased Subscriptions: </div>
       <ul id="purchasedList"></ul>
-      <a href="http://localhost:8000/">Log Out</a>
+      <a href="http://localhost:8000/" class="profile_out">Log Out</a>
     </form>
   </div>
 
@@ -598,8 +598,6 @@
     <script>
        document.addEventListener('DOMContentLoaded', (event) => {
       document.getElementById('profileName').innerText += sessionStorage.getItem('userName');
-      document.getElementById('profileSurname').innerText += sessionStorage.getItem('userSurname');
-      document.getElementById('profileLogin').innerText += sessionStorage.getItem('userLogin');
     
       // Fetch and display purchased subscriptions on profile popup load
       fetchPurchasedSubscriptions();
@@ -613,12 +611,23 @@
           const purchasedList = document.getElementById('purchasedList');
           purchasedList.innerHTML = '';
           data.forEach(purchase => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${purchase.class_name} with ${purchase.coach_name} - $${purchase.price}`;
-            purchasedList.appendChild(listItem);
+            addSubscriptionToList(purchase);
           });
         })
         .catch(error => console.error('Error fetching purchases:', error));
+    }
+
+    function addSubscriptionToList(purchase) {
+      const purchasedList = document.getElementById('purchasedList');
+      const existingItems = purchasedList.getElementsByTagName('li');
+      for (let item of existingItems) {
+        if (item.textContent === `${purchase.class_name} with ${purchase.coach_name}`) {
+          return; // Subscription already exists in the list
+        }
+      }
+      const listItem = document.createElement('li');
+      listItem.textContent = `${purchase.class_name} with ${purchase.coach_name}`;
+      purchasedList.appendChild(listItem);
     }
     
     function purchaseClass(className, coachName, price) {
@@ -644,7 +653,7 @@
           alert('Purchase successful!');
           fetchPurchasedSubscriptions(); // Refresh the purchased subscriptions list
         } else {
-          alert(data.message); // Show error message if subscription already exists
+          throw new Error('Purchase failed!');
         }
       })
       .catch(error => {
