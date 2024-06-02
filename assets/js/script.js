@@ -10,7 +10,6 @@ const closeRegisterPopupButton = document.getElementById('closeRegisterPopup');
 const alert_signin = document.getElementById('openPopup');
 
 
-
 function alert_signin_func (){
   alert(`You didn't sign in yet`)
 }
@@ -54,9 +53,9 @@ document.addEventListener('click', (e) => {
     registerPopupForm.classList.remove('active'); 
   }
 });
-
-
-
+  
+  
+  
   /**
    * navbar toggle
    */
@@ -94,6 +93,3 @@ document.addEventListener('click', (e) => {
       backTopBtn.classList.remove("active");
     }
   });
-
-  
-

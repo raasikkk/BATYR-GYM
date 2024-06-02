@@ -632,9 +632,59 @@
     color: var(--coquelicot);
     transition: 0.5s all;
   }
+
+
+.purchased_subs {
+  color: var(--coquelicot);
+  text-align: center;
+  font-size: var(--fs-6);
+  text-transform: uppercase;
+  font-weight: var(--fw-500);
+  margin-top: 20px;
+}
+
+#purchasedList li{
+  color: var(--cadet-gray);
+  border-left: 2px solid var(--coquelicot);
+  border-bottom: 2px solid var(--coquelicot);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+#purchasedList > a > span {
+  text-align: center;
+}
+
+  .profile_btn {
+    max-width: 300px;
+    font-size: var(--fs-6);
+    text-transform: uppercase;
+    font-weight: var(--fw-500);
+    padding: 15px 35px;
+    transition: var(--transition-1);
+    background: #fff;
+    color: var(--coquelicot);
+    border-bottom: 1.5px solid #cfd0d3;
+    
+    /* border-bottom: 1px solid #cfd0d3; */
+    padding: 15px;
+
+    margin: 10px;
+}
+
+.profile_btn:is{ background-color: var(--rich-black-fogra-29-1); }
   
-  
-  
+
+.profile_out {
+  margin-top: 15px;
+  text-align: center;
+  font-size: var(--fs-);
+}
+ 
+.profile_out:is(:hover, :focus) {
+  color: var(--coquelicot);
+}
   
   /*-----------------------------------*\
     #ABOUT
@@ -815,10 +865,6 @@
     font-weight: var(--fw-800);
     margin-block-end: 8px;
     margin-top: 22px;
-  }
-
-  .class-card .coach-wrapper span {
-
   }
 
   .class-card .price-wrapper {
